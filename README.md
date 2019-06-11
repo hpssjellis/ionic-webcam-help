@@ -1,9 +1,17 @@
 # my-cordova-webcam-test
 
 
+Repository at 
+
+https://github.com/hpssjellis/ionic-webcam-help
+
+You can fork it and see if it runs.
+
+My videos about gitpod are at
+
+https://rocksetta.com/rocksetta-gitpod-links.html
 
 
-https://hpssjellis.github.io/my-cordova-webcam-test/public/index.html
 
 
 This Gitpod should install Java, Android sdk, Cordova, Qrcode and Ionic and setup paths.

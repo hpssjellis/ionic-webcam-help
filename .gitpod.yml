@@ -7,7 +7,6 @@ ports:
 tasks:
   -  command: mkdir /workspace/ionic-webcam-help/logs                              &&
               touch /workspace/ionic-webcam-help/logs/gitpod-install-log.txt       &&
-              mkdir /workspace/ionic-webcam-help/android                           &&
        
        
               echo "Starting .gitpod.yml installation" &>>  /workspace/ionic-webcam-help/logs/gitpod-install-log.txt  &&  

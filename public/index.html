@@ -1,0 +1,74 @@
+<html>
+<head>
+<script>
+// Global Variables 
+let myVideoStream = null;
+let myStoredInterval = 0
+let stream = null;
+  
+stopVideo = async function() {  
+  clearInterval(myStoredInterval)   // good idea to stop the auto snapshot taking                                                                                         
+  myVideoStream.srcObject.getTracks().forEach(track => track.stop())  
+}
+   
+ 
+getVideo = async function() {
+   myVideoStream = document.getElementById('myVideo')     
+   const myCamera = await document.getElementById('myCheck').value
+   
+   if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+       navigator.mediaDevices.getUserMedia({video: { facingMode: myCamera }, audio: false}).then(
+          function(stream) {
+              myVideoStream.srcObject = stream;
+              myVideoStream.play();
+          },              
+          function(error) {
+              alert('webcam not working');
+          });
+   }
+} 
+   
+                                                                                                                                                                                         
+takeSnapshot = async function(){                                                                                           
+   var myCanvasElement = document.getElementById('my32x32CanvasA');
+   var myCTX = myCanvasElement.getContext('2d');
+   myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);
+}
+
+ 
+takeAuto = async function(){                                                                                           
+     await takeSnapshot() // get snapshot right away then wait and repeat 
+    clearInterval(myStoredInterval)
+    myStoredInterval = setInterval(async function(){                                                                                         
+       await takeSnapshot()                                                                                 
+   }, document.getElementById('myInterval').value);        
+}
+ 
+                                                                                           
+myStopAuto  = async function(){                                                                                             
+    clearInterval(myStoredInterval)    
+}                    
+ 
+</script>
+</head>
+<body>
+<h2 align=center>Test Webcam in Browser and Cordova or Ionic</h2>
+  
+<select size="1" id="myCheck">
+   <option value="environment">Rear Mobile Camera
+   </option><option value="user">Front Mobile Camera
+   </option>
+</select>
+
+<input type="button" id="myButtonActivateWebCam" value="Activate WebCam" onclick="{ getVideo() }">  
+<input type="button" id="myButtonActivateWebCam" value="Stop WebCam" onclick="{ stopVideo()  }">  <br><br>
+  
+<input type="button" id="myButtonAuto" value="Auto" onclick="{ takeAuto() }"> 
+Every <input type="number" id="myInterval" value="1000" style="width:50px"> ms
+<input type="button" value="Stop Auto" onclick="{ myStopAuto() }"><br><br>
+     
+<video id="myVideo" width="300" height="200" style="border: 1px solid #ddd;"></video>
+<canvas id="my32x32CanvasA" style="border: 1px solid #ddd;" width="300" height="200"></canvas> 
+
+
+

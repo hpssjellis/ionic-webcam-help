@@ -1,0 +1,38 @@
+
+<video id="video" width="320" height="240" autoplay  style="border: 1px solid #ddd;" ></video>
+<button id="snap">Snap Photo</button>
+<canvas id="canvas" width="320" height="240"  style="border: 1px solid #ddd;" ></canvas>
+
+
+
+
+
+
+<script>
+    
+    
+// Elements for taking the snapshot
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var video = document.getElementById('video');
+
+// Trigger photo take
+document.getElementById("snap").addEventListener("click", function() {
+	context.drawImage(video, 0, 0, 320, 240);
+});    
+    
+
+// Grab elements, create settings, etc.
+var video = document.getElementById('video');
+
+// Get access to the camera!
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.play();
+    });
+}
+
+
+</script>

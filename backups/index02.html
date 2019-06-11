@@ -1,0 +1,76 @@
+
+  
+<select size="1" id="myCheck">
+ <option value="environment">Rear Mobile Camera
+ </option><option value="user">Front Mobile Camera
+</option></select>
+
+<input type="button" id="myButtonActivateWebCam" value="Activate WebCam" onclick="{getVideo()}">  
+<input type="button" id="myButtonActivateWebCam" value="Stop WebCam" onclick="{ stopVideo()  }">  <br><br>
+
+ 
+Take snapshot every <input type="number" id="myInterval" value="500" size="5"> milliseconds<br>
+<input type="button" id="myButtonAuto" value="Auto" onclick="{takeAuto()}"> 
+<input type="button" value="Stop Auto" onclick="{myStopAuto()}"><br><br>
+<video id="myVideo" width="64" height="64" style="border: 1px solid #ddd;"></video>
+<canvas id="my32x32CanvasA" style="border: 1px solid #ddd; filter: grayscale(100%); background-color:lightgray;" width="28" height="28"></canvas> 
+
+
+
+
+
+<script>
+ 
+                                                                                           
+var myVideoStream = document.getElementById('myVideo')     // make it a global variable
+var myStoredInterval = 0
+                                                                                             
+stopVideo = async function() {  
+  clearInterval(myStoredInterval)   // god idea to stop the auto snapshot taking                                                                                         
+  myVideoStream.srcObject.getTracks().forEach(track => track.stop())  
+}
+   
+                                                                                          
+getVideo = async function() {  
+  const myCamera = await document.getElementById('myCheck').value
+                                                                                     
+  navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+  navigator.getMedia({video: { facingMode: myCamera }, audio: false},
+                     
+    function(stream) {
+      myVideoStream.srcObject = stream   
+      myVideoStream.play();
+  }, 
+                     
+   function(error) {
+     alert('webcam not working');
+  });
+}
+   
+                                                                                             
+                                                                                             
+                                                                                             
+                                                                                             
+takeSnapshot = async function(){                                                                                           
+   var myCanvasElement = document.getElementById('my32x32CanvasA');
+   var myCTX = myCanvasElement.getContext('2d');
+   myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);
+}
+
+                                                                                             
+takeAuto = async function(){                                                                                           
+     await takeSnapshot() // get snapshot right away then wait and repeat
+    // await document.getElementById('myButtonPredict').click()      
+    clearInterval(myStoredInterval)
+    myStoredInterval = setInterval(async function(){                                                                                         
+       await takeSnapshot()
+    //   await document.getElementById('myButtonPredict').click()                                                                                       
+   }, document.getElementById('myInterval').value);        
+}
+  
+                                                                                           
+myStopAuto  = async function(){                                                                                             
+    clearInterval(myStoredInterval)    
+}                    
+ 
+</script>

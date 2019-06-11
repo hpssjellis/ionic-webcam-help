@@ -13,6 +13,11 @@ https://rocksetta.com/rocksetta-gitpod-links.html
 
 
 
+You can run this github repository as a Gitpod by clicking
+
+https://gitpod.io/#github.com/hpssjellis/ionic-webcam-help
+
+Which inserts gitpod.io/# into the URL 
 
 This Gitpod should install Java, Android sdk, Cordova, Qrcode and Ionic and setup paths.
 

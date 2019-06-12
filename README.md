@@ -1,6 +1,8 @@
 # my-cordova-webcam-test
 
 
+Demo page at https://hpssjellis.github.io/ionic-webcam-help/public/index.html
+
 Repository at 
 
 https://github.com/hpssjellis/ionic-webcam-help

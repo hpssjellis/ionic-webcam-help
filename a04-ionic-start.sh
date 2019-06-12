@@ -18,14 +18,14 @@ ionic cordova build --prod
 
 number=$RANDOM
 
-cp /workspace/my-gitpod-ionic-cordova/$wow4/platforms/android/app/build/outputs/apk/debug/app-debug.apk /workspace/my-gitpod-ionic-cordova/public/$wow4-app-debug$number.apk
+cp /workspace/ionic-webcam-help/$wow4/platforms/android/app/build/outputs/apk/debug/app-debug.apk /workspace/ionic-webcam-help/public/$wow4-app-debug$number.apk
 
 
 
-qrcode -o /workspace/my-gitpod-ionic-cordova/public/qrout.png $(gp url 8001);
-echo "<br>Just a QR code to the same webpage <br><img src='qrout.png'><br>" >> /workspace/my-gitpod-ionic-cordova/public/index.html
+qrcode -o /workspace/ionic-webcam-help/public/qrout.png $(gp url 8001);
+echo "<br>Just a QR code to the same webpage <br><img src='qrout.png'><br>" >> /workspace/ionic-webcam-help/public/index.html
 
-echo "<li><a href="$wow4-app-debug$number.apk">$wow4-app-debug$number.apk</a><br>" >> /workspace/my-gitpod-ionic-cordova/public/index.html
+echo "<li><a href="$wow4-app-debug$number.apk">$wow4-app-debug$number.apk</a><br>" >> /workspace/ionic-webcam-help/public/index.html
 
 
 #open the preview pane

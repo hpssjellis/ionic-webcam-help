@@ -17,15 +17,19 @@ cd $wow4
 
 cordova build android --no-telemetry
 
+number=$RANDOM
 
-# backup old .apk
-cp /workspace/my-gitpod-ionic-cordova/public/$wow4-app-debug.apk /workspace/my-gitpod-ionic-cordova/public/$wow4-backup-app-debug.apk
+cp /workspace/my-gitpod-ionic-cordova/$wow4/platforms/android/app/build/outputs/apk/debug/app-debug.apk /workspace/my-gitpod-ionic-cordova/public/$wow4-app-debug$number.apk
 
-#copy new .apk to the public folder
-cp /workspace/my-gitpod-ionic-cordova/$wow4/platforms/android/app/build/outputs/apk/debug/app-debug.apk /workspace/my-gitpod-ionic-cordova/public/$wow4-app-debug.apk
 
-echo "<li> Next rebuild <a href="$wow4-app-debug.apk">$wow4-app-debug.apk</a><br>" >> /workspace/my-gitpod-ionic-cordova/public/index.html
 
+
+echo "<li> Next rebuild <a href="$wow4-app-debug$number.apk">$wow4-app-debug$number.apk</a><br>" >> /workspace/my-gitpod-ionic-cordova/public/index.html
+
+#open the preview pane
+apachectl start
+gp await-port 8001
+gp preview $(gp url 8001)
 
 echo "Refresh your web browser!"
 echo "You must delete your old download on your phone or the installation will give an error as the file name has changed"

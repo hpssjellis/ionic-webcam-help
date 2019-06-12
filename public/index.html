@@ -14,7 +14,7 @@ stopVideo = async function() {
  
 getVideo = async function() {
   
-  alert('location.href.match(/^file:/); shows:'+location.href.match(/^file:/);)
+
    myVideoStream = document.getElementById('myVideo')     
    const myCamera = await document.getElementById('myCheck').value
    
@@ -68,6 +68,12 @@ myStopAuto  = async function(){
 <input type="button" id="myButtonAuto" value="Auto" onclick="{ takeAuto() }"> 
 Every <input type="number" id="myInterval" value="1000" style="width:50px"> ms
 <input type="button" value="Stop Auto" onclick="{ myStopAuto() }"><br><br>
+<input type="button" value="Check Android or Web" onclick="{ 
+ 
+let myAndroid = location.href.match(/^file:/);
+if (myAndroid){alert('Running on a cell phone')}   else {alert('Just a web app')}                                                        
+                                                           
+}"><br><br>
      
 <video id="myVideo" width="300" height="200" style="border: 1px solid #ddd;"></video>
 <canvas id="my32x32CanvasA" style="border: 1px solid #ddd;" width="300" height="200"></canvas> 

@@ -46,6 +46,11 @@ I am new to Ionic so this might take a while to get correct. Presently the follo
 ./a04-ionic-start.sh
 
 
+
+For Capacitor use ./a06 (tab) bash file
+
+
+
 Check out this Ionic CheatSheet
 https://devdactic.com/ionic-cheatsheet/
 
@@ -54,5 +59,9 @@ And here are the ionic Docs
 https://ionicframework.com/docs/cli
 
 
+
+gitpod snapshot Jun13th, 2019
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#snapshot/909e6839-50d2-4a70-a67f-fdb5df14182d)
 
 

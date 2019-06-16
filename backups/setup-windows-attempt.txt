@@ -5,7 +5,7 @@
 $env:path -split ";"
 
 
-$env:Path += ";C:\Users\Jeremy Ellis\AppData\Local\Android\Sdk;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdk\tools\bin;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdk\tools;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdk\build-tools;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdkplatform-tools;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdkplatforms"
+$env:Path += ";C:\Users\my Name\AppData\Local\Android\Sdk;C:\Users\my Name\AppData\Local\Android\Sdk\tools\bin;C:\Users\my Name\AppData\Local\Android\Sdk\tools;C:\Users\my Name\AppData\Local\Android\Sdk\build-tools;C:\Users\my Name\AppData\Local\Android\Sdkplatform-tools;C:\Users\my Name\AppData\Local\Android\Sdkplatforms"
 
 
 
@@ -39,14 +39,18 @@ npx @capacitor/cli create --npm-client npm  $wow4 $wow4 com.$wow4.$wow4 $wow4
 # need admin access
 
 
-cmd /c mklink /J "C:\Users\jeremyellis" "C:\Users\Jeremy Ellis"
+Start-Process powershell -Verb runAs
 
-npm config set cache C:\Users\jeremyellis\AppData\Roaming\npm-cache
+cmd /c mklink /J "C:\Users\myname" "C:\Users\My Name"
 
-npm config set prefix C:\Users\jeremyellis\AppData\Roaming\npm
+npm config set cache C:\Users\myname\AppData\Roaming\npm-cache
+
+npm config set prefix C:\Users\myname\AppData\Roaming\npm
 
 
 #may solve
+
+
 
 
 cmd /c mklink /J "C:\Users\myname" "C:\Users\My Name"

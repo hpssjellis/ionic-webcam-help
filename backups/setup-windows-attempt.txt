@@ -17,27 +17,7 @@ sdkmanager --list
 
 capacitor -V
 
-
-npx @capacitor/cli create --npm-client npm  myApp myApp com.myApp.myApp myApp
-
-
-
-
-
-ISSUES
-
-
-
-
-$input01 = Read-Host 'Is it morning, afternoon, or evening? '
-Write-Output "Good $input01!"
-
-$wow4 =  Read-Host 'Name of folder for App'
-npx @capacitor/cli create --npm-client npm  $wow4 $wow4 com.$wow4.$wow4 $wow4
-
-
-# need admin access
-
+#needed to set my Name to work as myname in windows
 
 Start-Process powershell -Verb runAs
 
@@ -48,16 +28,42 @@ npm config set cache C:\Users\myname\AppData\Roaming\npm-cache
 npm config set prefix C:\Users\myname\AppData\Roaming\npm
 
 
-#may solve
 
 
 
 
-cmd /c mklink /J "C:\Users\myname" "C:\Users\My Name"
+npx @capacitor/cli create --npm-client npm  myApp myApp com.myApp.myApp myApp
+
+cd myApp
+
+npx cap add android
+
+./android/gradlew
+
+cd android
 
 
-#You can then use this junction as if it were your real user directory:
+# had to re-install android with licensee
+sdkmanager "platform-tools" "build-tools;28.0.3" "platforms;android-28" 
 
-npm config set cache C:\Users\myname\AppData\Roaming\npm-cache
 
-npm config set prefix C:\Users\myname\AppData\Roaming\npm
+# set Android-Home environment variable
+
+$env:ANDROID_HOME = "C:\Users\My Name\AppData\Local\Android\Sdk"
+
+
+
+./gradlew assembleDebug
+
+
+# app in normal android location
+#C:\Users\My Name\Documents\capacitor\cap-try\myApp\android\app\build\outputs\apk\debug>
+
+
+
+
+
+
+
+
+

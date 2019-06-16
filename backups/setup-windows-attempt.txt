@@ -1,0 +1,59 @@
+#load powershell into your folder by typing powershell in the URL
+
+
+
+$env:path -split ";"
+
+
+$env:Path += ";C:\Users\Jeremy Ellis\AppData\Local\Android\Sdk;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdk\tools\bin;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdk\tools;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdk\build-tools;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdkplatform-tools;C:\Users\Jeremy Ellis\AppData\Local\Android\Sdkplatforms"
+
+
+
+$env:path -split ";"
+
+
+sdkmanager --list
+
+
+capacitor -V
+
+
+npx @capacitor/cli create --npm-client npm  myApp myApp com.myApp.myApp myApp
+
+
+
+
+
+ISSUES
+
+
+
+
+$input01 = Read-Host 'Is it morning, afternoon, or evening? '
+Write-Output "Good $input01!"
+
+$wow4 =  Read-Host 'Name of folder for App'
+npx @capacitor/cli create --npm-client npm  $wow4 $wow4 com.$wow4.$wow4 $wow4
+
+
+# need admin access
+
+
+cmd /c mklink /J "C:\Users\jeremyellis" "C:\Users\Jeremy Ellis"
+
+npm config set cache C:\Users\jeremyellis\AppData\Roaming\npm-cache
+
+npm config set prefix C:\Users\jeremyellis\AppData\Roaming\npm
+
+
+#may solve
+
+
+cmd /c mklink /J "C:\Users\myname" "C:\Users\My Name"
+
+
+#You can then use this junction as if it were your real user directory:
+
+npm config set cache C:\Users\myname\AppData\Roaming\npm-cache
+
+npm config set prefix C:\Users\myname\AppData\Roaming\npm
